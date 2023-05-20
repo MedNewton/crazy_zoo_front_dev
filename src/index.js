@@ -7,11 +7,11 @@ import ScrollToTop from './ScrollToTop';
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
 import { configureChains, createClient, WagmiConfig } from 'wagmi'
-import { arbitrum, mainnet, polygon, polygonMumbai } from 'wagmi/chains'
+import { arbitrum, arbitrumGoerli, mainnet, polygon, polygonMumbai } from 'wagmi/chains'
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { NetworkContractsContextProvider } from './context/providers/contractProvider'
 
-const chains = [arbitrum, mainnet, polygon, polygonMumbai];
+const chains = [arbitrumGoerli, arbitrum, mainnet, polygon, polygonMumbai];
 
 const apiKey = "Qg-FtBXZr0sZeieqGOg1HoR1ma6MscWF";
 

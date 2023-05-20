@@ -1,8 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { GetMinimumInvestment } from '../../../hooks/main/getMinimumInvestment';
+import { GetMaximumInvestment } from '../../../hooks/main/getMaximumInvestment';
+import { GetTokenDecimals } from '../../../hooks/main/getTokenDecimals';
+import { usdcTokenAddress } from '../../../hooks/main/abi';
 
 const PresalePriceGlassBox = (props) => {
   const data = props.data;
+
+  const decimals = GetTokenDecimals(usdcTokenAddress);
+  const minimumInvestment = GetMinimumInvestment();
+  const maximumInvestment = GetMaximumInvestment();
   return (
     <div className="presalePriceGlassBox">
       <div className="presaleTokenPrice">
@@ -57,7 +65,7 @@ const PresalePriceGlassBox = (props) => {
           <div className="presaleTokenPrice">
             <h5 className="presaleTokenPriceLabel">Minimum Buy</h5>
             <h5 className="presaleTokenPriceData">
-              {data[0].minBuy.toString()} $USDT
+            {(Number(minimumInvestment.data)/10**Number(decimals.data))} $USDT
             </h5>
           </div>
         </div>
@@ -65,7 +73,7 @@ const PresalePriceGlassBox = (props) => {
           <div className="presaleTokenPrice">
             <h5 className="presaleTokenPriceLabel">Maximum Buy</h5>
             <h5 className="presaleTokenPriceData">
-              {data[0].maxBuy.toString()} $USDT
+            {Number(maximumInvestment.data)/10**Number(decimals.data)} $USDT
             </h5>
           </div>
         </div>

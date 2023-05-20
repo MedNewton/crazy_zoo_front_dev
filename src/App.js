@@ -6,6 +6,8 @@ import pawIcon from './assets/images/swapping/Paw_coin.png'
 import {
     useAccount,
   } from 'wagmi'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const UserContext = createContext(null);
 
@@ -36,6 +38,19 @@ function App() {
 
     return (
 
+        <>
+        <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        theme="light"
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
         <UserContext.Provider value={[ fromCoin, setFromCoin, toCoin, setToCoin ]}>
             <Routes >
                 {
@@ -45,6 +60,7 @@ function App() {
                 }
             </Routes>
         </UserContext.Provider>
+        </>
     );
 }
 
