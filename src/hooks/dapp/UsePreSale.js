@@ -9,7 +9,8 @@ const SetPreSale = (methodName,args, chainId)=>{
     address: `${config.ContractsConfig[chainId].PRESALE}`,
     abi:  abis.PreSale.abi,
     functionName: methodName,
-    args
+    args,
+    enabled:Boolean(methodName && chainId && args)
   })
   const { data, isLoading, isSuccess, write } = useContractWrite(conf)
   return { data, isLoading, isSuccess, write }
@@ -21,7 +22,8 @@ const GetPreSale = (methodName,chainId,args)=>{
     address: `${config.ContractsConfig[chainId].PRESALE}`,
     abi:  abis.PreSale.abi,
     functionName: methodName,
-    args
+    args,
+    enabled:Boolean(methodName && chainId && args)
   })
   return { data, isError, isLoading };
 }

@@ -11,7 +11,7 @@ export function GetAllowanceAmount(ownerAddress, spenderAddress) {
     abi: usdcTokenAbi,
     functionName: 'allowance',
     args: [ownerAddress, spenderAddress],
-    enabled: Boolean(ownerAddress)
+    enabled: Boolean(ownerAddress && spenderAddress)
   });
   return allowanceAmount;
 }

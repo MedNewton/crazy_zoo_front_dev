@@ -12,7 +12,7 @@ export function GetUserUsdcBalance(ownerAddress) {
     abi: usdcTokenAbi,
     functionName: 'balanceOf',
     args: [ownerAddress],
-    // enabled: Boolean(ownerAddress)
+    enabled: Boolean(ownerAddress)
   });
   return allowanceAmount;
 }

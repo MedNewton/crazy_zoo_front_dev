@@ -8,7 +8,8 @@ const SetNFT = (methodName,args, chainId)=>{
     address: `${config.ContractsConfig[chainId].ZOONFT}`,
     abi:  abis.CrazyZooNFT.abi,
     functionName: methodName,
-    args
+    args,
+    enabled:Boolean(args)
   })
   const { data, isLoading, isSuccess, write } = useContractWrite(conf)
   return { data, isLoading, isSuccess, write }
@@ -19,7 +20,8 @@ const GetNFT = (methodName,chainId,args)=>{
     address: `${config.ContractsConfig[chainId].ZOONFT}`,
     abi: abis.CrazyZooNFT.abi,
     functionName: methodName,
-    args
+    args,
+    enabled:Boolean(methodName && chainId && args)
   })
   return { data, isError, isLoading };
 }

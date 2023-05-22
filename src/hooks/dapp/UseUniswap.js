@@ -12,7 +12,8 @@ const SetUniswapIntermediary = (methodName,args, chainId)=>{
     address: `${config.ContractsConfig[chainId].UNISWAPINTERMEDIARY}`,
     abi:  abis.UniswapIntermediary.abi,
     functionName: methodName,
-    args
+    args,
+    enabled:Boolean(methodName && chainId && args)
   })
   const { data, isLoading, isSuccess, write } = useContractWrite(conf)
   return { data, isLoading, isSuccess, write }
@@ -25,7 +26,8 @@ const GetUniswapIntermediary = (methodName,args, chainID)=>{
     address:`${config.ContractsConfig[chainID].UNISWAPINTERMEDIARY}`,
     abi: abis.UniswapIntermediary.abi,
     functionName: methodName,
-    args 
+    args,
+    enabled:Boolean(methodName && chainID && args)
   })
   return { data, isError, isLoading };
 }

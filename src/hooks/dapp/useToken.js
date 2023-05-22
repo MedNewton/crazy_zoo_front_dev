@@ -12,7 +12,8 @@ const SetToken = (methodName, args, chainId) => {
     address: `${config.ContractsConfig[chainId].ZOOTOKEN}`,
     abi: abis.CrazyZooToken.abi,
     functionName: methodName,
-    args
+    args,
+    enabled:Boolean(methodName && chainId && args)
   })
   const { data, isLoading, isSuccess, write } = useContractWrite(conf)
   return { data, isLoading, isSuccess, write }
@@ -24,7 +25,8 @@ const GetToken = (methodName, chainId, args) => {
     address: `${config.ContractsConfig[chainId].ZOOTOKEN}`,
     abi: abis.CrazyZooToken.abi,
     functionName: methodName,
-    args
+    args,
+    enabled:Boolean(methodName && chainId && args)
   })
   return { data, isError, isLoading };
 

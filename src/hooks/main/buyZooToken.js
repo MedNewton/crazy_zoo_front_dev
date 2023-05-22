@@ -19,7 +19,7 @@ export function BuyZooToken(user, refer, amount) {
       abi: preSaleAbi,
       functionName: "buyZooTokens",
       args: [user, refer, convertedAmount],
-      enabled: Boolean(user, amount),
+      enabled: Boolean(user && refer && amount),
       overrides:{
         gasLimit: 500000
       }

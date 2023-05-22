@@ -13,7 +13,8 @@ const SetUSDT = (methodName,args,chainId)=>{
     address:`${config.ContractsConfig[chainId].USDC}`,
     abi: abis.USDT.abi,
     functionName: methodName,
-    args
+    args,
+    enabled:Boolean(methodName && chainId && args)
   })
   const { data, isLoading, isSuccess, write } = useContractWrite(conf)
   return { data, isLoading, isSuccess, write }

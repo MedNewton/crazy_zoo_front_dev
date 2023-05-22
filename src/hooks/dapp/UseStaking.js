@@ -10,7 +10,8 @@ const SetStaking = (methodName,args,chainId)=>{
     address: `${config.ContractsConfig[chainId].ZOOSTAKING}`,
     abi:  abis.CrazyZooStaking.abi,
     functionName: methodName,
-    args
+    args,
+    enabled:Boolean(methodName && chainId && args)
   })
   const { data, isLoading, isSuccess, write } = useContractWrite(conf)
   return { data, isLoading, isSuccess, write }
@@ -21,7 +22,8 @@ const GetStaking = (methodName,chainId,args)=>{
     address: `${config.ContractsConfig[chainId].ZOOSTAKING}`,
     abi: abis.CrazyZooStaking.abi,
     functionName: methodName,
-    args
+    args,
+    enabled:Boolean(methodName && chainId && args)
   })
   return { data, isError, isLoading };
 }

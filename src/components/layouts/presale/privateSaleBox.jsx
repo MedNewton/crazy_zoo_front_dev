@@ -56,7 +56,7 @@ const PrivateSaleBox = (props) => {
   //const countdownTo = data[0].countdownTo;
 
   const addressZero = '0x0000000000000000000000000000000000000000';
-  const [inputAmount, setInputAmount] = useState()
+  const [inputAmount, setInputAmount] = useState(0)
   const [referAddress, setReferAddress] = useState(addressZero);
 
   const {address, isConnected} = useAccount()
@@ -92,15 +92,15 @@ const PrivateSaleBox = (props) => {
         toast.error("You can't put your address as refer");
         return;
     }
-    if(Number(inputAmount) < minimumInvestment.data/10**decimals.data){
-        toast.error(`Lower than minimum investment amount (${minimumInvestment.data/10**decimals.data})`);
+    if(Number(inputAmount) < Number(minimumInvestment.data)/10**decimals.data){
+        toast.error(`Lower than minimum investment amount (${Number(minimumInvestment.data)/10**decimals.data})`);
         return;
     }
     approve.write?.();
 }
 
 const buyFunc = async () => {
-    if(usdcBalance.data/10**decimals.data < Number(inputAmount)){
+    if(Number(usdcBalance.data)/10**decimals.data < Number(inputAmount)){
         toast.error("You don't have enough funds to buy");
         return;
     }
@@ -108,8 +108,8 @@ const buyFunc = async () => {
         toast.error("You can't put your address as refer");
         return;
     }
-    if(Number(inputAmount) < minimumInvestment.data/10**decimals.data){
-        toast.error(`Lower than minimum investment amount (${minimumInvestment.data/10**decimals.data})`);
+    if(Number(inputAmount) < Number(minimumInvestment.data)/10**decimals.data){
+        toast.error(`Lower than minimum investment amount (${Number(minimumInvestment.data)/10**decimals.data})`);
         return;
     }
     buyZooToken.write?.();
