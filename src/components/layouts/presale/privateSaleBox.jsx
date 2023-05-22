@@ -100,6 +100,7 @@ const PrivateSaleBox = (props) => {
 }
 
 const buyFunc = async () => {
+  
     if(Number(usdcBalance.data)/10**decimals.data < Number(inputAmount)){
         toast.error("You don't have enough funds to buy");
         return;
@@ -112,6 +113,7 @@ const buyFunc = async () => {
         toast.error(`Lower than minimum investment amount (${Number(minimumInvestment.data)/10**decimals.data})`);
         return;
     }
+    
     buyZooToken.write?.();
 }
 
