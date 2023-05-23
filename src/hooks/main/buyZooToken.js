@@ -19,10 +19,10 @@ export function BuyZooToken(user, refer, amount) {
       abi: preSaleAbi,
       functionName: "buyZooTokens",
       args: [user, refer, convertedAmount],
-      enabled: Boolean(user && refer && amount),
-      overrides:{
-        gasLimit: 500000
-      }
+      // enabled: Boolean(user && refer && amount),
+      // overrides:{
+      //   gasLimit: 500000
+      // }
     });
     // console.log("approve inputs :", spender, convertedAmount);
     const { data, isLoading, isSuccess, write, status, reset } =

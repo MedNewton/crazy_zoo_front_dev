@@ -69,6 +69,7 @@ const PrivateSaleBox = (props) => {
   const minimumInvestment = GetMinimumInvestment();
   const maximumInvestment = GetMaximumInvestment();
 
+  useEffect(() => console.log("allowance:", allowance.data), [allowance.data])
 
   const convertedAllowance = Number(allowance.data) / 10 ** Number(decimals.data);
   let approveAmount = convertedAllowance < Number(inputAmount) ? Number(inputAmount): 0;
@@ -96,6 +97,7 @@ const PrivateSaleBox = (props) => {
         toast.error(`Lower than minimum investment amount (${Number(minimumInvestment.data)/10**decimals.data})`);
         return;
     }
+    console.log("approve", approve, referAddress)
     approve.write?.();
 }
 
@@ -112,6 +114,7 @@ const buyFunc = async () => {
         toast.error(`Lower than minimum investment amount (${Number(minimumInvestment.data)/10**decimals.data})`);
         return;
     }
+    console.log(buyZooToken)
     buyZooToken.write?.();
 }
 
@@ -147,12 +150,12 @@ useEffect(() => {
         allowance.refetch();
         toast.dismiss();
         toast.success("Approved Successfully!");
-        approve.reset();
+        // approve.reset();
     }
     if(approveWait.isError){
         toast.dismiss();
         toast.warning("Approving Failed!");
-        approve.reset();
+        // approve.reset();
     }
 },[approveWait.isLoading, approveWait.isSuccess, approveWait.isError])
 
@@ -165,12 +168,12 @@ useEffect(() => {
         allowance.refetch();
         toast.dismiss();
         toast.success("You bought token Successfully!");
-        buyZooToken.reset();
+        // buyZooToken.reset();
     }
     if(buyZooTokenWait.isError){
         toast.dismiss();
         toast.warning("Buying Failed!");
-        buyZooToken.reset();
+        // buyZooToken.reset();
     }
 },[buyZooTokenWait.isLoading, buyZooTokenWait.isSuccess, buyZooTokenWait.isError])
 

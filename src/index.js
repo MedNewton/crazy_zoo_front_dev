@@ -8,20 +8,23 @@ import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { arbitrum, arbitrumGoerli, mainnet, polygon, polygonMumbai } from 'wagmi/chains'
-import { alchemyProvider } from "wagmi/providers/alchemy";
+import { AlchemyProvider } from '@alch/alchemy-sdk';
+// import { alchemyProvider } from "wagmi/providers/alchemy";
+// import {alchemyProvider } from "wagmi";
 // import { NetworkContractsContextProvider } from './context/providers/contractProvider'
 
 const chains = [arbitrumGoerli];
 
-const apiKey = "Qg-FtBXZr0sZeieqGOg1HoR1ma6MscWF";
+// const apiKey = "Qg-FtBXZr0sZeieqGOg1HoR1ma6MscWF";
+const apiKey = "bf654e6fc9d49befea8caee62446e467"; 
 
 
 
 // Wagmi client
-const { publicClient } = configureChains(chains, [alchemyProvider({ apiKey })])
+const { publicClient } = configureChains(chains, [w3mProvider({projectId:apiKey})])
 const wagmiConfig = createConfig({
   autoConnect: true,
-  connectors: w3mConnectors({ apiKey, version: 1, chains }),
+  connectors: w3mConnectors({ projectId:apiKey, version: 1, chains }),
   publicClient
 })
 const ethereumClient = new EthereumClient(wagmiConfig, chains)

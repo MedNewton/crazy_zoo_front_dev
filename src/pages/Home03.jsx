@@ -13,10 +13,21 @@ import LastPartners from '../components/layouts/home-3/lastPartners';
 import Community from '../components/layouts/home-3/Community';
 import LandingPageFooter from '../components/layouts/home-3/LandingPageFooter';
 import NFTsMintingIntro from '../components/layouts/home-3/NFTsSection';
+import { GetMinimumInvestment } from '../hooks/main/getMinimumInvestment';
+import { usdcTokenAddress } from '../hooks/main/abi';
+import { GetTokenDecimals } from '../hooks/main/getTokenDecimals';
 
 
 const Home03 = () => {
+    const decimals = GetTokenDecimals(usdcTokenAddress);
+    const minimumInvestment = GetMinimumInvestment();
 
+    useEffect(() => {
+    console.log("Decimals:", (decimals))
+    console.log("Minimum Investment:", (minimumInvestment))
+    },[decimals, minimumInvestment])
+
+    console.log("hello world")
 
     useEffect(()=>{
         document.body.style.overflow = "auto";
